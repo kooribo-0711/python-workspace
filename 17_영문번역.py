@@ -21,6 +21,7 @@ pip install googletrans-py
 # deep-translator 라이브러리에서 GoogleTranslator 라는 도구를 활용하여 번역을 진행하겠다.
 from deep_translator import GoogleTranslator
 
+
 text = "Hello World"
 # 결과 = GoogleTranslator(source='en', target='ko').translate(text)
 결과 = GoogleTranslator(source='en', target='ja').translate(text)
@@ -30,6 +31,19 @@ text1 = "안녕하세요"
 # 결과 = GoogleTranslator(source='en', target='ko').translate(text)
 결과2 = GoogleTranslator(source='auto', target='en').translate(text1)
 print(결과2)
+
+'''
+def 만능번역기() :
+    print("번역할 문장과 언어를 입력하시오.")
+    번역할문장 = input("번역할 문장을 입력하시오.")
+    번역할언어 = input("번역할 언어를 입력하시오.")
+
+    결과 = GoogleTranslator(source='auto', target={번역할언어}).translate(번역할문장)
+    print(결과)
+
+만능번역기()
+'''
+
 
 '''
 GoogleTranslate().translate()
@@ -54,3 +68,4 @@ source = 'auto' 사용 가능
 GoogleTranslator(source='en', target='ja').translate("번역될문자열")
 
 '''
+
