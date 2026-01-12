@@ -28,7 +28,7 @@ def 숫자4자리찾기():
             종료시간 = datetime.now()
             걸린시간 = (종료시간 - 시작시간).total_seconds()
             print("비밀번호를 찾았습니다. : ", 비밀번호)
-            print(f"걸린시간 : {걸린시간:.2f}ch") # f"" = 문자열 형식 / :.2f = float = 수수점 몇번째
+            print(f"걸린시간 : {걸린시간:.2f}ch") # f"" = 문자열 형식 / :.2f = float = 소수점 몇번째
 
     print("비밀번호를 찾기 못했습니다.")
 
@@ -50,7 +50,7 @@ try는 하나지만 except는 1개 이상 작성 가능
 '''
 
 def 숫자4자리찾기시도하기():
-    zip파일이름 = '랜덤비밀번호파일.zip'
+    zip파일이름 = '1_variable.zip'
 
     print("숫자 비밀번호 찾기를 시작합니다.")
     시작시간 = datetime.now()
@@ -68,7 +68,27 @@ def 숫자4자리찾기시도하기():
         except (RuntimeError, pyzipper.zipfile.BadZipFile, OSError, ValueError) :
             # continue
             pass # 비밀번호를 틀리면 조용히 다음 시도
-        
+
     print("비밀번호를 찾지 못했습니다.")
 
 숫자4자리찾기시도하기()
+
+'''
+Traceback (most recent call last):
+  File "c:\Users\TJ\Desktop\python-workspace\24_비밀번호찾기.py", line 74, in <module>
+    숫자4자리찾기시도하기()
+  File "c:\Users\TJ\Desktop\python-workspace\24_비밀번호찾기.py", line 63, in 숫자4자리찾기시도하기
+    zf.read(zf.namelist()[0])
+  File "C:\Users\TJ\AppData\Local\Programs\Python\Python312\Lib\site-packages\pyzipper\zipfile.py", line 1964, in read
+    return fp.read()
+           ^^^^^^^^^
+  File "C:\Users\TJ\AppData\Local\Programs\Python\Python312\Lib\site-packages\pyzipper\zipfile.py", line 1369, in read
+    buf += self._read1(self.MAX_N)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\TJ\AppData\Local\Programs\Python\Python312\Lib\site-packages\pyzipper\zipfile.py", line 1467, in _read1
+    data = self._decompressor.decompress(data, n)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+zlib.error: Error -3 while decompressing data: invalid code lengths set
+PS C:\Users\TJ\Desktop\python-workspace>
+
+'''
