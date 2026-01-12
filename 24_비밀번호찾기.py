@@ -68,7 +68,7 @@ def 숫자4자리찾기시도하기():
         except (RuntimeError, pyzipper.zipfile.BadZipFile, OSError, ValueError) :
             # continue
             pass # 비밀번호를 틀리면 조용히 다음 시도
-
+        
     print("비밀번호를 찾지 못했습니다.")
 
 숫자4자리찾기시도하기()
