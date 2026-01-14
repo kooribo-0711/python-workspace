@@ -1,0 +1,22 @@
+<head>
+    <meta charset="UTF-8"><!--body태그 내부에 작성한 한글깨짐 방지-->
+    <!-- width = 디바이스(모바일,데스크톱, 태블릿 등) 가로 기준 100% 표준에 맞게 화면 보여주기 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 탭 제목 -->
+    <title>소식지</title>
+    <!-- html 언어에서 외부파일을 가져와 사용하는 방법
+     link나 어떤 링크를 참조해서 나의 html 파일에 적용하겠다.
+     참조하는 것은 stylesheet이고,
+     href="" 가져오는 곳은 여기야
+             가져오는 주소 메인폴더위치 파일이름           그 폴더 안에서 폴더를 타거나 안 타도 되는데 폴더 내에 위치한 특정 .css 파일을 가져오겠다
+     href="{{url_for(__name__으로 초반에 app.py에서 찾아놓은 폴더이름,filename='css/공통스타일.css')}}"
+
+     static/css/ -> app.py위치에서 본 적이 없음
+                                              static만 가능  static 내 모든 파일 ok
+     <link rel="'stylesheet" href="{{url_for('static /css/',filename='공통스타일.css')}}">
+
+
+     아래와 같은 형태만 가능
+     <link rel="stylesheet" href="{{url_for('static',filename='css/공통스타일.css')}}">
+    -->
+        <link rel="stylesheet" href="{{url_for('static',filename='css/공통스타일.css')}}">
