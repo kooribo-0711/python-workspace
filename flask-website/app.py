@@ -95,7 +95,7 @@ def image():
 if not os.path.exists(업로드_폴더):
     os.makedirs(업로드_폴더)
 
-@app.route("/apply-filter", methods=["post"])
+@app.route("/apply-filter", methods=["POST"])
 def apply_filter():
     try:
         if 'image' not in request.files:

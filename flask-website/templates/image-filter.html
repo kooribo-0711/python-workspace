@@ -4,6 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이미지필터</title>
+    <!-- css = html에 스타일을 입히는 작업 -->
+     <style>
+        /* * DOCTYPE html 부터 /html 까지 모든 태그에 적용
+        현업팀 : 많은 css 작업자들이
+        외부 간격과 내부 간격을 0으로 만든 상태에서 진행
+        box-sizing:border-box 형태로 진행
+
+        content-box : 개발자가 지정한 틀에서 외부와 내부에 간격이 발생하면 그만큼 가로나 세로 너비가 커지게 됨
+                      개발자는 매번 간격이 발생한 가로 세로 너비를 계산하여 html 태그 위치를 조장
+        border-box :
+        */
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        h1{
+            color: white;
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2rem;
+        }
+     </style>
 </head>
 <body>
     <h1>
@@ -55,6 +83,11 @@
                    radio와 checkbox 안됨
     -->
     <!-- 이미지 필터 적용 이미지 작업을 제출할 때는 반드시 multipart를 선택해서 작업 -->
+    <!-- form : 내부에서 클라이언트가 선택하거나 입력한 데이터를 특정 주소 전달. 
+                취지와 목적에 걸맞는 데이터를 모아서 수집하는 형태
+           id : "form 제출한 데이터를 다른 언어에서 사용하기 위한 명칭" 
+                enctype = form 클라이언트가 작성한 데이터가 글자 형식만 존재하는지 / 이미지 & 파일 형식도 존재하는지 확인        
+    -->
     <form id="filterForm" enctype="multipart/form-data">
         <label for="파일선택">📷</label>
         <!--

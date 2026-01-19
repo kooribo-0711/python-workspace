@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>논문 - AI 연구실</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <h1 class="logo">🎓 AI 연구실</h1>
+            <ul class="nav-menu">
+                <li><a href="/">홈</a></li>
+                <li><a href="/research">연구분야</a></li>
+                <li><a href="/members">연구원</a></li>
+                <li><a href="/publications">논문</a></li>
+                <li><a href="/contact">연락처</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h2>논문 및 성과</h2>
+            <p>우리 연구실의 연구 성과를 소개합니다</p>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <div class="publications-list">
+                {% for paper in papers %}
+                <div class="publication-item">
+                    <span class="year">{{ paper.year }}</span>
+                    <div class="paper-info">
+                        <h4>{{ paper.title }}</h4>
+                        <p>{{ paper.journal }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 AI 연구실. All rights reserved.</p>
+    </footer>
+
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+</body>
+</html>

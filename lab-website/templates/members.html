@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연구원 - AI 연구실</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <h1 class="logo">🎓 AI 연구실</h1>
+            <ul class="nav-menu">
+                <li><a href="/">홈</a></li>
+                <li><a href="/research">연구분야</a></li>
+                <li><a href="/members">연구원</a></li>
+                <li><a href="/publications">논문</a></li>
+                <li><a href="/contact">연락처</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h2>연구원</h2>
+            <p>우리 연구실의 구성원을 소개합니다</p>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <!-- 교수 -->
+            <div class="professor-section">
+                <h3>지도교수</h3>
+                <div class="member-card professor">
+                    <div class="member-avatar">👨‍🏫</div>
+                    <h4>{{ professor.name }}</h4>
+                    <p class="position">{{ professor.position }}</p>
+                    <p class="email">📧 {{ professor.email }}</p>
+                </div>
+            </div>
+
+            <!-- 학생들 -->
+            <div class="students-section">
+                <h3>연구원</h3>
+                <div class="members-grid">
+                    {% for student in students %}
+                    <div class="member-card">
+                        <div class="member-avatar">👨‍💻</div>
+                        <h4>{{ student.name }}</h4>
+                        <p class="position">{{ student.position }}</p>
+                        <p class="research">{{ student.research }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 AI 연구실. All rights reserved.</p>
+    </footer>
+
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+</body>
+</html>

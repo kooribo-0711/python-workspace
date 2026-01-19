@@ -1,0 +1,398 @@
+/* 기본 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 네비게이션 */
+nav {
+    background: #1a5f3f;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: #7dd3a0;
+}
+
+/* 메인 배너 */
+.hero {
+    background: linear-gradient(135deg, #1a5f3f 0%, #2d8659 100%);
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.hero-content h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    background: white;
+    color: #1a5f3f;
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+/* 섹션 */
+section {
+    padding: 60px 20px;
+}
+
+.intro {
+    background: #f8f9fa;
+    text-align: center;
+}
+
+.intro h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #1a5f3f;
+}
+
+/* 카드 그리드 */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.card h4 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #1a5f3f;
+}
+
+/* 페이지 헤더 */
+.page-header {
+    background: linear-gradient(135deg, #1a5f3f 0%, #2d8659 100%);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.page-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* 컨텐츠 */
+.content {
+    padding: 60px 20px;
+}
+
+.content h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #1a5f3f;
+}
+
+/* 연구 아이템 */
+.research-item {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.research-icon {
+    font-size: 3rem;
+    margin-right: 2rem;
+}
+
+.research-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* 멤버 */
+.professor-section {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.member-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.member-card.professor {
+    max-width: 400px;
+    margin: 2rem auto;
+}
+
+.member-avatar {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.member-card h4 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #1a5f3f;
+}
+
+.position {
+    color: #7f8c8d;
+    font-weight: 600;
+}
+
+.email {
+    color: #2d8659;
+    margin-top: 0.5rem;
+}
+
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* 졸업생 스타일 */
+.alumni-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.alumni-item {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.alumni-item:hover {
+    transform: translateX(5px);
+}
+
+.alumni-avatar {
+    font-size: 3rem;
+    min-width: 60px;
+    text-align: center;
+}
+
+.alumni-info h4 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #1a5f3f;
+}
+
+.alumni-degree {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.alumni-current {
+    color: #2d8659;
+    font-weight: 600;
+}
+
+/* 논문 */
+.publications-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.publication-item {
+    display: flex;
+    gap: 2rem;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.year {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1a5f3f;
+    min-width: 60px;
+}
+
+.paper-info h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #1a5f3f;
+}
+
+.paper-info p {
+    color: #7f8c8d;
+}
+
+/* 연락처 */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.contact-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.contact-item.clickable {
+    cursor: pointer;
+}
+
+.contact-item.clickable:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(26, 95, 63, 0.2);
+}
+
+.contact-item small {
+    display: block;
+    margin-top: 0.5rem;
+    color: #2d8659;
+    font-size: 0.85rem;
+}
+
+.contact-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.contact-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #1a5f3f;
+}
+
+/* 푸터 */
+footer {
+    background: #1a5f3f;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+
+    .research-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .research-icon {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .alumni-item {
+        flex-direction: column;
+        text-align: center;
+    }
+}

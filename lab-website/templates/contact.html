@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연락처 - 바이오인포매틱스 연구실</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/contact.css')}}">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <h1 class="logo">🧬 바이오인포매틱스 연구실</h1>
+            <ul class="nav-menu">
+                <li><a href="/">홈</a></li>
+                <li><a href="/research">연구분야</a></li>
+                <li><a href="/members">연구원</a></li>
+                <li><a href="/alumni">졸업생</a></li>
+                <li><a href="/publications">논문</a></li>
+                <li><a href="/contact">연락처</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h2>연락처</h2>
+            <p>연구실 위치 및 연락 정보</p>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">🏢</div>
+                    <h4>연구실명</h4>
+                    <p>{{ info.lab }}</p>
+                </div>
+                <div class="contact-item clickable" id="addressBtn">
+                    <div class="contact-icon">📍</div>
+                    <h4>주소</h4>
+                    <p>{{ info.address }}</p>
+                    <small>클릭하면 지도가 표시됩니다</small>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <h4>전화</h4>
+                    <p>{{ info.phone }}</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <h4>이메일</h4>
+                    <p>{{ info.email }}</p>
+                </div>
+            </div>
+
+            <!-- 지도 영역 -->
+            <div id="mapContainer" class="map-container">
+                <div class="map-header">
+                    <h3>📍 연구실 위치</h3>
+                    <button id="closeMap" class="close-btn">✕</button>
+                </div>
+                <div id="map"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 바이오인포매틱스 연구실. All rights reserved.</p>
+    </footer>
+
+    <!-- 지도 데이터 전달 -->
+    <script>
+        const mapData = {
+            lat: {{ info.map_lat }},
+            lng: {{ info.map_lng }},
+            address: "{{ info.address }}"
+        };
+    </script>
+    
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+    <script src="{{url_for('static', filename='js/contact.js')}}"></script>
+</body>
+</html>
