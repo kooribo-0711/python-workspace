@@ -1,4 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, send_file  # 웹과 컴퓨터가 이미지를 주고받기 위해 필요한 기능
+from PIL import Image, ImageEnhance  #사진 관련 설정
+import os                            # 현재 나의 컴퓨터에서 특정 위치에 파일을 불러오거나 현재위치확인 저장 사용 
+from io import BytesIO               # 사진 입출력
 
 
 app = Flask(__name__) # 이제부터 이 파일을 웹사이트용 프로그램으로 사용하겠다.
@@ -87,10 +90,6 @@ def about():
 def image():
     return render_template("image-filter.html")
 
-from flask import request,send_file  # 웹과 컴퓨터가 이미지를 주고받기 위해 필요한 기능
-from PIL import Image, ImageEnhance  #사진 관련 설정
-import os                            # 현재 나의 컴퓨터에서 특정 위치에 파일을 불러오거나 현재위치확인 저장 사용 
-from io import BytesIO               # 사진 입출력
 
 업로드_폴더 = 'static/uploads'
 if not os.path.exists(업로드_폴더):
@@ -125,6 +124,7 @@ def apply_filter():
         img_io.seek(0)
 
         return send_file(img_io, mimetype="image/png")
+    
     except Exception as e:
         return f"에러 발생"
 
