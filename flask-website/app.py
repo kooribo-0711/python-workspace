@@ -87,6 +87,47 @@ def about():
 def image():
     return render_template("image-filter.html")
 
+from flask import request,send_file  # 웹과 컴퓨터가 이미지를 주고받기 위해 필요한 기능
+from PIL import Image, ImageEnhance  #사진 관련 설정
+import os                            # 현재 나의 컴퓨터에서 특정 위치에 파일을 불러오거나 현재위치확인 저장 사용 
+from io import BytesIO               # 사진 입출력
+
+업로드_폴더 = 'static/uploads'
+if not os.path.exists(업로드_폴더):
+    os.makedirs(업로드_폴더)
+
+@app.route("/apply-filter", methods=["post"])
+def apply_filter():
+    try:
+        if 'image' not in request.files:
+            return '이미지를 선택해 주세요'
+
+        file = request.files['image']
+        if file.filename == "":
+            return '파일이 선택되지 않았습니다'
+
+        # 웹사이트에서 클라이언트가 지정한 필터값을 가져오기
+        대비 = float(request.form.get('contrast',1.0))
+        채도 = float(request.form.get('saturation',1.0))
+        밝기 = float(request.form.get('brightness',1.0))
+
+        # 클라이언트가 업로드한 이미지에 필터를 적용하기 위해 이미지 열기
+        img = Image.open(file.stream)
+
+        #필터 적용
+        대비조절 = ImageEnhance.Contrast(img).enhance(대비)
+        채도조절 = ImageEnhance.Color(대비조절).enhance(채도)
+        밝기조절 = ImageEnhance.Brightness(채도조절).enhance(밝기)
+
+        # 메모리에 이미지 저장
+        img_io = BytesIO()
+        밝기조절.save(img_io, "PNG")
+        img_io.seek(0)
+
+        return send_file(img_io, mimetype="image/png")
+    except Exception as e:
+        return f"에러 발생"
+
 
 '''
 아래 존재하는 주석을 참고하여

@@ -54,7 +54,8 @@
                    input에 어떤 값을 써야하는지 hint제공
                    radio와 checkbox 안됨
     -->
-    <form>
+    <!-- 이미지 필터 적용 이미지 작업을 제출할 때는 반드시 multipart를 선택해서 작업 -->
+    <form id="filterForm" enctype="multipart/form-data">
         <label for="파일선택">📷</label>
         <!--
         태그 내부에 style을 쓴 우 디자인 작성 기능 사용 지양.
@@ -65,19 +66,61 @@
                   실제로는 input에서 파일선택이라는 input이 동작하지만 
                   유저들 눈에는 📷 클릭했을 때 마치 파일 선택이 되는 것 처럼 보임
                   type="file" 나의 컴퓨터에 존재하는 파일 선택
+                  style="display: none;"
         -->
-        <input id="파일선택" type="file" style="display: none;" required><br>
-        <label>대비 : </label> 
-        <input type="number" step="0.1" value="1.3"
+        <input id="파일선택" name="image" type="file" required><br>
+        <div id="fileName">선택된 파일이 없습니다.</div>
+        <label for="대비">대비 : </label> 
+        <input id="대비" name="contrast" type="number" step="0.1" value="1.3">
         <br>
-        <label>채도 : </label> 
-        <input type="number" step="0.1" value="1.3"
+        <label for="채도">채도 : </label> 
+        <input id="채도" name="saturation" type="number" step="0.1" value="1.3">
         <br>
-        <label>밝기 : </label> 
-        <input type="number" step="0.1" value="1.3"
+        <label for="밝기">밝기 : </label> 
+        <input id="밝기" name="brightness" type="number" step="0.1" value="1.3">
         <br>
         <button>필터 적용하기</button>
     </form>
-    <!-- 파이썬에서 만들어놓은 이미지필터를 html에서 선택하여 사용 -->
+
+    <div id="previewArea"
+        <h3>필터 적용 결과</h3>
+        <img id="resultImage"
+
+    
+    <!--파이썬에서 만들어놓은 이미지필터를 html에서 선택하여 사용 -->
 </body>
+ <script>
+        // 파일 선택 시 파일명 표시
+        document.getElementById('파일선택').addEventListener('change', function(e) {
+            const fileName = e.target.files[0]?.name || '선택된 파일이 없습니다.';
+            document.getElementById('fileName').textContent = fileName;
+        });
+        
+        // 폼 제출 처리
+        document.getElementById('filterForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            
+            try {
+                const response = await fetch('/apply-filter', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const imageUrl = URL.createObjectURL(blob);
+                    
+                    document.getElementById('resultImage').src = imageUrl;
+                    document.getElementById('previewArea').style.display = 'block';
+                } else {
+                    alert('필터 적용 중 오류가 발생했습니다.');
+                }
+            } catch (error) {
+                alert('에러: ' + error.message);
+            }
+        });
+    </script>
+
 </html>
