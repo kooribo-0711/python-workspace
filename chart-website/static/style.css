@@ -1,0 +1,230 @@
+/* style.css - 웹사이트 디자인 파일 */
+
+/* ============================================
+   기본 설정
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* ============================================
+   컨테이너 (전체 감싸는 박스)
+   ============================================ */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   헤더 영역
+   ============================================ */
+.header {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+/* 시간 박스들 */
+.time-boxes {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.time-box {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 15px 20px;
+    border-radius: 10px;
+    color: white;
+    min-width: 200px;
+}
+
+.time-box .label {
+    font-size: 12px;
+    opacity: 0.9;
+    margin-bottom: 5px;
+}
+
+.time-box .value {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* ============================================
+   버튼 영역
+   ============================================ */
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+select, button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+select {
+    background: white;
+    color: #333;
+    border: 2px solid #667eea;
+}
+
+button {
+    background: #667eea;
+    color: white;
+}
+
+button:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   카드 (각 섹션 박스)
+   ============================================ */
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+/* ============================================
+   가격 아이템
+   ============================================ */
+.price-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.price-item:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+/* 코인 정보 (왼쪽) */
+.coin-name {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+}
+
+.coin-symbol {
+    font-size: 12px;
+    color: #666;
+}
+
+/* 가격 정보 (오른쪽) */
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.change {
+    font-size: 14px;
+    padding: 4px 8px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+/* 상승 (빨간색) */
+.change.up {
+    background: #ffebee;
+    color: #c62828;
+}
+
+/* 하락 (파란색) */
+.change.down {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+/* ============================================
+   차트 영역
+   ============================================ */
+.chart-box {
+    position: relative;
+    height: 300px;
+    margin-top: 20px;
+}
+
+/* ============================================
+   트렌딩 아이템
+   ============================================ */
+.trending-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.trending-rank {
+    font-weight: bold;
+    font-size: 18px;
+    color: #667eea;
+    min-width: 30px;
+}
+
+.trending-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.trending-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.trending-symbol {
+    color: #666;
+    font-size: 14px;
+}
+
+/* ============================================
+   로딩 메시지
+   ============================================ */
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    font-size: 16px;
+}

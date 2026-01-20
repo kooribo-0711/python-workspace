@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mini Musinsa</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a class="logo" href="/">Mini Musinsa</a>
+
+      <nav class="nav">
+        <a href="/" class="nav__link">상품</a>
+        <a href="/cart" class="nav__link">장바구니</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <small>Demo project for learning Flask + HTML/CSS/JS</small>
+    </div>
+  </footer>
+</body>
+</html>

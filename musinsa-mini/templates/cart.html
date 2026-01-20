@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="page-title">장바구니</h1>
+
+<section id="cartRoot" class="cart"></section>
+<div id="status" class="status"></div>
+
+<script type="module" src="{{ url_for('static', filename='js/cart.js') }}"></script>
+{% endblock %}

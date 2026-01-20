@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section id="productDetail" class="product-detail"></section>
+<div id="status" class="status"></div>
+
+<script type="module">
+  // import 경로는 고정(린터/브라우저 모두 안정적)
+  import { initProductPage } from "/static/js/product.js";
+
+  // product_id만 Jinja로 주입
+  initProductPage(Number("{{ product_id }}"));
+</script>
+{% endblock %}
