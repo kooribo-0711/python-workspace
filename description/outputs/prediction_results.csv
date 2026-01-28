@@ -1,0 +1,12 @@
+﻿Metric,Value
+Predicted_Date,2026-01-29
+Predicted_Price_KRW,160414.80
+Last_Known_Price_KRW,167223.29
+Expected_Change_KRW,-6808.49
+Expected_Change_Percent,-4.07
+Confidence_Interval_Lower,151247.06
+Confidence_Interval_Upper,169582.54
+Model_Test_RMSE,4677.42
+Model_Test_MAE,4046.45
+Model_Test_R2,0.8889
+Model_Test_Accuracy_Percent,97.01
