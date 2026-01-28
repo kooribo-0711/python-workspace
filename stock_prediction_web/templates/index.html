@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📈 주가 예측 대시보드</title>
+    
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        
+        <!-- 헤더 -->
+        <div class="header">
+            <h1>📈 AI 주가 예측 대시보드</h1>
+            
+            <div class="time-boxes">
+                <div class="time-box">
+                    <div class="label">현재 시간</div>
+                    <div class="value" id="currentTime">--:--:--</div>
+                </div>
+                <div class="time-box">
+                    <div class="label">마지막 업데이트</div>
+                    <div class="value" id="lastUpdate">--:--:--</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 탭 메뉴 -->
+        <div class="tab-menu">
+            <button class="tab-button active" onclick="switchTab('stock')">
+                📊 주가 예측
+            </button>
+            <button class="tab-button" onclick="switchTab('crypto')">
+                🪙 암호화폐
+            </button>
+        </div>
+
+        <!-- 주가 예측 탭 -->
+        <div id="stockTab" class="tab-content active">
+            
+            <!-- 예측 컨트롤 -->
+            <div class="card">
+                <h2>🎯 주가 예측 설정</h2>
+                
+                <div class="prediction-controls">
+                    <div class="control-group">
+                        <label>종목 선택</label>
+                        <select id="stockSelect">
+                            <option value="삼성전자">삼성전자</option>
+                            <option value="SK하이닉스">SK하이닉스</option>
+                            <option value="네이버">네이버</option>
+                            <option value="카카오">카카오</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label>예측 기간</label>
+                        <select id="daysSelect">
+                            <option value="1">1일 후</option>
+                            <option value="3">3일 후</option>
+                            <option value="7" selected>7일 후</option>
+                            <option value="14">14일 후</option>
+                            <option value="30">30일 후</option>
+                        </select>
+                    </div>
+                    
+                    <button class="predict-button" onclick="predictStock()">
+                        🔮 예측 시작
+                    </button>
+                </div>
+            </div>
+
+            <!-- 예측 결과 -->
+            <div class="card" id="predictionResult" style="display: none;">
+                <h2>📊 예측 결과</h2>
+                
+                <div class="prediction-summary">
+                    <div class="summary-item">
+                        <div class="summary-label">현재 주가</div>
+                        <div class="summary-value" id="currentPrice">-</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">예측 주가</div>
+                        <div class="summary-value prediction" id="predictedPrice">-</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">예상 변동</div>
+                        <div class="summary-value" id="priceChange">-</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">변동률</div>
+                        <div class="summary-value" id="changePercent">-</div>
+                    </div>
+                </div>
+
+                <div class="confidence-info">
+                    <h3>📈 신뢰 구간 (95%)</h3>
+                    <div id="confidenceRange">-</div>
+                </div>
+            </div>
+
+            <!-- 주가 차트 -->
+            <div class="card">
+                <h2>📉 주가 추이 및 예측</h2>
+                <div class="chart-box">
+                    <canvas id="stockChart"></canvas>
+                </div>
+            </div>
+
+            <!-- 통계 정보 -->
+            <div class="card">
+                <h2>📊 통계 분석</h2>
+                <div id="stockStats">
+                    <div class="loading">종목을 선택하고 예측을 실행하세요</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 암호화폐 탭 -->
+        <div id="cryptoTab" class="tab-content">
+            
+            <!-- 암호화폐 컨트롤 -->
+            <div class="buttons">
+                <select id="coinSelect">
+                    <option value="bitcoin">비트코인 (BTC)</option>
+                    <option value="ethereum">이더리움 (ETH)</option>
+                    <option value="ripple">리플 (XRP)</option>
+                    <option value="cardano">카르다노 (ADA)</option>
+                    <option value="solana">솔라나 (SOL)</option>
+                </select>
+                <button onclick="loadCryptoChart()">차트 보기</button>
+                <button onclick="refreshCrypto()">새로고침</button>
+            </div>
+
+            <!-- 암호화폐 가격 -->
+            <div class="card">
+                <h2>💰 실시간 가격</h2>
+                <div id="priceList">로딩 중...</div>
+            </div>
+
+            <!-- 암호화폐 차트 -->
+            <div class="card">
+                <h2>📊 가격 차트 (최근 7일)</h2>
+                <div class="chart-box">
+                    <canvas id="cryptoChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,440 @@
+/* style.css - 주가 예측 대시보드 스타일 */
+
+/* ============================================
+   기본 설정
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   헤더
+   ============================================ */
+.header {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.time-boxes {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.time-box {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 15px 20px;
+    border-radius: 10px;
+    color: white;
+    min-width: 200px;
+}
+
+.time-box .label {
+    font-size: 12px;
+    opacity: 0.9;
+    margin-bottom: 5px;
+}
+
+.time-box .value {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* ============================================
+   탭 메뉴
+   ============================================ */
+.tab-menu {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    background: white;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+.tab-button.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* ============================================
+   카드
+   ============================================ */
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+/* ============================================
+   예측 컨트롤
+   ============================================ */
+.prediction-controls {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.control-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.control-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+
+select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #667eea;
+    border-radius: 8px;
+    font-size: 14px;
+    background: white;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+select:focus {
+    outline: none;
+    border-color: #5568d3;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.predict-button {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.predict-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+}
+
+.predict-button:active {
+    transform: translateY(0);
+}
+
+/* ============================================
+   예측 결과 요약
+   ============================================ */
+.prediction-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.summary-item {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    border-left: 4px solid #667eea;
+}
+
+.summary-label {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.summary-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.summary-value.prediction {
+    color: #667eea;
+}
+
+.summary-value.up {
+    color: #c62828;
+}
+
+.summary-value.down {
+    color: #1976d2;
+}
+
+/* ============================================
+   신뢰 구간
+   ============================================ */
+.confidence-info {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #667eea;
+}
+
+.confidence-info h3 {
+    color: #667eea;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#confidenceRange {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* ============================================
+   버튼 영역
+   ============================================ */
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    background: #667eea;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   가격 아이템
+   ============================================ */
+.price-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.price-item:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+.coin-name {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+}
+
+.coin-symbol {
+    font-size: 12px;
+    color: #666;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.change {
+    font-size: 14px;
+    padding: 4px 8px;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.change.up {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.change.down {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+/* ============================================
+   차트
+   ============================================ */
+.chart-box {
+    position: relative;
+    height: 400px;
+    margin-top: 20px;
+}
+
+/* ============================================
+   통계 정보
+   ============================================ */
+#stockStats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.stat-item {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* ============================================
+   로딩
+   ============================================ */
+.loading {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    font-size: 16px;
+}
+
+/* ============================================
+   반응형
+   ============================================ */
+@media (max-width: 768px) {
+    .prediction-controls {
+        flex-direction: column;
+    }
+    
+    .control-group {
+        width: 100%;
+    }
+    
+    .predict-button {
+        width: 100%;
+    }
+    
+    .prediction-summary {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-box {
+        height: 300px;
+    }
+}
+
+/* ============================================
+   애니메이션
+   ============================================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeIn 0.5s ease;
+}
+
+/* ============================================
+   스크롤바 스타일
+   ============================================ */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5568d3;
+}
