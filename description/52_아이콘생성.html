@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Icon Generator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .container {
+            text-align: center;
+        }
+        
+        h1 {
+            color: white;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        canvas {
+            border: 3px solid white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: white;
+            margin-bottom: 20px;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .info {
+            color: white;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧮 파이썬 계산기 아이콘</h1>
+        <canvas id="canvas" width="512" height="512"></canvas>
+        <div class="buttons">
+            <button onclick="downloadPNG()">PNG로 다운로드</button>
+            <button onclick="downloadICO()">ICO로 다운로드</button>
+            <button onclick="regenerate()">다시 생성</button>
+        </div>
+        <div class="info">
+            <p>계산기 프로그램의 느낌을 담은 아이콘입니다</p>
+            <p>숫자와 연산 기호가 포함된 깔끔한 디자인</p>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        function drawIcon() {
+            // 배경 그라디언트
+            const gradient = ctx.createLinearGradient(0, 0, 512, 512);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 512, 512);
+            
+            // 계산기 본체
+            ctx.fillStyle = '#2d3748';
+            ctx.shadowColor = 'rgba(0,0,0,0.5)';
+            ctx.shadowBlur = 20;
+            ctx.shadowOffsetY = 10;
+            roundRect(ctx, 80, 60, 352, 392, 20);
+            ctx.shadowBlur = 0;
+            ctx.shadowOffsetY = 0;
+            
+            // 디스플레이 화면
+            ctx.fillStyle = '#1a202c';
+            roundRect(ctx, 100, 80, 312, 80, 10);
+            
+            // 디스플레이 텍스트
+            ctx.fillStyle = '#48bb78';
+            ctx.font = 'bold 48px monospace';
+            ctx.textAlign = 'right';
+            ctx.fillText('123.45', 390, 135);
+            
+            // 버튼 그리드
+            const buttons = [
+                ['7', '8', '9', '/'],
+                ['4', '5', '6', '*'],
+                ['1', '2', '3', '-'],
+                ['0', '.', '=', '+']
+            ];
+            
+            const buttonSize = 65;
+            const gap = 10;
+            const startX = 110;
+            const startY = 190;
+            
+            buttons.forEach((row, rowIndex) => {
+                row.forEach((btn, colIndex) => {
+                    const x = startX + colIndex * (buttonSize + gap);
+                    const y = startY + rowIndex * (buttonSize + gap);
+                    
+                    // 버튼 배경
+                    if (['+', '-', '*', '/', '='].includes(btn)) {
+                        // 연산자 버튼
+                        const opGradient = ctx.createLinearGradient(x, y, x + buttonSize, y + buttonSize);
+                        opGradient.addColorStop(0, '#f56565');
+                        opGradient.addColorStop(1, '#c53030');
+                        ctx.fillStyle = opGradient;
+                    } else {
+                        // 숫자 버튼
+                        ctx.fillStyle = '#4a5568';
+                    }
+                    
+                    ctx.shadowColor = 'rgba(0,0,0,0.3)';
+                    ctx.shadowBlur = 5;
+                    ctx.shadowOffsetY = 3;
+                    roundRect(ctx, x, y, buttonSize, buttonSize, 8);
+                    ctx.shadowBlur = 0;
+                    ctx.shadowOffsetY = 0;
+                    
+                    // 버튼 텍스트
+                    ctx.fillStyle = 'white';
+                    ctx.font = 'bold 28px Arial';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(btn, x + buttonSize/2, y + buttonSize/2);
+                });
+            });
+            
+            // Python 로고 힌트 (작은 뱀 아이콘)
+            ctx.fillStyle = '#FFD43B';
+            ctx.beginPath();
+            ctx.arc(430, 420, 30, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = '#306998';
+            ctx.beginPath();
+            ctx.arc(420, 415, 12, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(420, 413, 4, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        function roundRect(ctx, x, y, width, height, radius) {
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+            ctx.lineTo(x + width, y + height - radius);
+            ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+            ctx.lineTo(x + radius, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.closePath();
+            ctx.fill();
+        }
+        
+        function downloadPNG() {
+            const link = document.createElement('a');
+            link.download = 'calculator_icon.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        async function downloadICO() {
+            // ICO 파일은 여러 크기의 이미지를 포함해야 하므로
+            // 간단하게 256x256 PNG를 ICO로 변환
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = 256;
+            tempCanvas.height = 256;
+            const tempCtx = tempCanvas.getContext('2d');
+            
+            // 원본 이미지를 256x256으로 축소
+            tempCtx.drawImage(canvas, 0, 0, 512, 512, 0, 0, 256, 256);
+            
+            // PNG로 다운로드 (브라우저에서 진정한 ICO 생성은 제한적)
+            const link = document.createElement('a');
+            link.download = 'calculator_icon_256.png';
+            link.href = tempCanvas.toDataURL('image/png');
+            link.click();
+            
+            alert('256x256 PNG 파일이 다운로드됩니다.\n온라인 변환 도구(예: convertio.co)를 사용하여 ICO 형식으로 변환할 수 있습니다.');
+        }
+        
+        function regenerate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawIcon();
+        }
+        
+        // 초기 아이콘 생성
+        drawIcon();
+    </script>
+</body>
+</html>
